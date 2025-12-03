@@ -37,7 +37,6 @@ public class EntityHologram extends Entity implements CustomEntity {
     public static final String IDENTIFIER = "powernukkitx:hologram";
 
     public static final String SPACING = "spacing";
-    public static final String UPDATETICK = "updateTick";
     public static final String LINES = "lines";
 
     private static final Field text_id;
@@ -54,7 +53,6 @@ public class EntityHologram extends Entity implements CustomEntity {
     }
 
     private float spacing = 0.3f;
-    private int updateTick = 20;
     private List<String> lines;
 
     public EntityHologram(IChunk chunk, CompoundTag nbt) {
@@ -68,10 +66,6 @@ public class EntityHologram extends Entity implements CustomEntity {
             this.namedTag.putFloat(SPACING, 0.3f);
         }
         this.spacing = this.namedTag.getFloat(SPACING);
-        if(!this.namedTag.containsInt(UPDATETICK)) {
-            this.namedTag.putInt(UPDATETICK, 20);
-        }
-        this.updateTick = this.namedTag.getInt(UPDATETICK);
         if(!this.namedTag.containsList(LINES)) {
             this.namedTag.putList(LINES, new ListTag<>(Tag.TAG_String));
         }
@@ -82,7 +76,6 @@ public class EntityHologram extends Entity implements CustomEntity {
     public void saveNBT() {
         super.saveNBT();
         this.namedTag.putFloat(SPACING, spacing);
-        this.namedTag.putInt(UPDATETICK, updateTick);
         this.namedTag.putList(LINES, new ListTag<>(lines.stream().map(StringTag::new).toList()));
     }
 
