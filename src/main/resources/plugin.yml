@@ -4,3 +4,5 @@ api: 2.0.0
 authors: [Buddelbubi]
 description: Add holograms to your server
 main: org.powernukkitx.holograms.Holograms
+softdepend:
+  - PlaceholderAPI
