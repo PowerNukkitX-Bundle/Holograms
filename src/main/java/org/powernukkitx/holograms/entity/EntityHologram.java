@@ -100,7 +100,7 @@ public class EntityHologram extends Entity implements CustomEntity {
             List<String> lines = this.getDisplayLines(player);
             for (int i = lines.size() - 1; i >= 0; i--) {
                 loc.y += spacing;
-                TextDebugShape shape = new TextDebugShape(loc.asVector3f(), Color.WHITE, lines.get(i));
+                TextDebugShape shape = new TextDebugShape(loc.asVector3f(), Color.WHITE, lines.get(i), null);
                 shape.networkId = ((this.getId()) << 32) | (i & 0xffffffffL);
                 packet.shapes.add(shape);
             }
@@ -114,7 +114,7 @@ public class EntityHologram extends Entity implements CustomEntity {
         if (this.hasSpawned.containsKey(player.getLoaderId())) {
             ServerScriptDebugDrawerPacket packet = new ServerScriptDebugDrawerPacket();
             for (int i = lines.size() - 1; i >= 0; i--) {
-                TextDebugShape shape = new TextDebugShape(Vector3.ZERO.asVector3f(), Color.WHITE, "");
+                TextDebugShape shape = new TextDebugShape(Vector3.ZERO.asVector3f(), Color.WHITE, "", null);
                 shape.networkId = ((this.getId()) << 32) | (i & 0xffffffffL);
                 packet.shapes.add(shape);
             }
@@ -148,7 +148,7 @@ public class EntityHologram extends Entity implements CustomEntity {
                 String curLine = curLines.get(i);
                 if(!sentLines.get(i).equals(curLine)) {
                     sentLines.set(i, curLine);
-                    TextDebugShape shape = new TextDebugShape(loc.asVector3f(), Color.WHITE, curLine);
+                    TextDebugShape shape = new TextDebugShape(loc.asVector3f(), Color.WHITE, curLine, null);
                     shape.networkId = ((this.getId()) << 32) | (i & 0xffffffffL);
                     packet.shapes.add(shape);
                 }

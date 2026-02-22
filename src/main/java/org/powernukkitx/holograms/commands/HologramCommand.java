@@ -105,7 +105,7 @@ public class HologramCommand extends PluginCommand<Holograms> {
                                                            .addButton("§cDelete line", player4 -> {
                                                                content.remove(finalI);
                                                                ServerScriptDebugDrawerPacket packet = new ServerScriptDebugDrawerPacket();
-                                                               TextDebugShape shape = new TextDebugShape(Vector3.ZERO.asVector3f(), Color.WHITE, "");
+                                                               TextDebugShape shape = new TextDebugShape(Vector3.ZERO.asVector3f(), Color.WHITE, "", null);
                                                                shape.networkId = ((hologram.getId()) << 32) | (finalI & 0xffffffffL);
                                                                packet.shapes.add(shape);
                                                                Server.broadcastPacket(hologram.getViewers().values(), packet);
